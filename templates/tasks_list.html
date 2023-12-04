@@ -1,0 +1,23 @@
+{% include "base.html" %} {% block content %}
+{% if user.is_authenticated %}
+<div class="container">
+  <a href="{% url "add_task" %}" class="btn btn-primary">+add new task</a>
+<div class="container70 m-auto">
+{% endif %}
+
+  {% for object in object_list %}
+    {% if object.user == user or user.is_superuser or not user.is_active and user.is_authenticated %}
+      <div class="card container-sm">
+        <h5 class="card-header">{{ object.user }}</h5>
+        <div class="card-body">
+          <h5 class="card-title">{{ object.title }}</h5>
+          <p class="card-text"><td>{{ object.due_date }}</td></p>
+          <a href="{% url "detail_task" object.pk %}" class="btn btn-primary">more</a>
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}
+
+</div>
+</div>
+{% endblock content %}

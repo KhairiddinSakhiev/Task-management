@@ -1,0 +1,23 @@
+{% include "base.html" %}
+{% block content %}
+<div class="container50 m-auto border">
+      <div class="card">
+        <h5 class="card-header">
+            {{ task.user }}
+        </h5>
+        <div class="card-body">
+          <h5 class="card-title">{{ task.title }}</h5>
+          <p class="card-text"><td>{{ task.created_at }}</td></p>
+          <p class="card-text"><td>{{ task.due_date }}</td></p>
+          {% if task.is_done %}
+            <p>Task was succesifuly done</p>
+          {% else %}
+            <p>Task not compleated</p>
+          {% endif %}
+          <a href="{% url "task_list" %}" class="btn btn-warning p-2"> Go back</a>
+          <a href="{% url "edit_task" task.pk %}" class="btn btn-primary p-2"> Upadate</a>
+          <a href="{% url "delete_task" task.pk %}" class="btn btn-danger p-2"> Delete</a>
+        </div>
+      </div>
+  </div>
+{% endblock content %}

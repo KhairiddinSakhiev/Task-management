@@ -1,0 +1,22 @@
+{% include "base.html" %}
+{% block content %}
+<form method="post"> {% csrf_token %}
+    <div class="card-delete">
+    <div class="card">
+        <h5 class="card-header">
+            {{ task.user }}
+        </h5>
+        <div class="card-body">
+          <h5 class="card-title warning"> 
+            You really want to delete this task
+          </h5>
+        </div>
+        <div class="card-btn">
+            <a class="btn btn-primary d-block m-2" href="{% url "detail_task" task.pk%}"> NO</a>
+        <input class="btn btn-danger d-block p-2 m-2" type="submit" value = "Yes">
+      </div>
+      </div>
+      </div>
+</form>
+
+{% endblock content %}

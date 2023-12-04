@@ -1,0 +1,9 @@
+{% include "base.html" %}
+{% block content %}
+<form class="form form-md border m-auto" method="post"> {% csrf_token %}
+    <legend class="header">Updates form</legend>
+    {{form.as_p}}
+    <input class="btn btn-warning" type="submit" value = "edit">
+</form>
+
+{% endblock content %}
